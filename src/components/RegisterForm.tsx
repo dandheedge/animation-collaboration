@@ -21,6 +21,7 @@ import { z } from "zod";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "@/lib/firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { useToast } from "@/components/ui/use-toast";
 
 const formSchema = z.object({
   username: z.string(),
@@ -33,6 +34,7 @@ const formSchema = z.object({
     .min(6, { message: "Password must be at least 6 characters long" }),
 });
 export function RegisterForm() {
+  const { toast } = useToast();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,100 +44,6 @@ export function RegisterForm() {
     },
   });
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const lottieDefaultAnimation = {
-      nm: "Bouncy Ball",
-      v: "5.5.2",
-      ip: 0,
-      op: 120,
-      fr: 60,
-      w: 512,
-      h: 512,
-      layers: [
-        {
-          ddd: 0,
-          ty: 4,
-          ind: 0,
-          st: 0,
-          ip: 0,
-          op: 120,
-          nm: "Layer",
-          ks: {
-            a: { a: 0, k: [0, 0] },
-            p: { a: 0, k: [0, 0] },
-            s: { a: 0, k: [100, 100] },
-            r: { a: 0, k: 0 },
-            o: { a: 0, k: 100 },
-          },
-          shapes: [
-            {
-              ty: "gr",
-              nm: "Ellipse Group",
-              it: [
-                {
-                  ty: "el",
-                  nm: "Ellipse",
-                  p: { a: 0, k: [204, 169] },
-                  s: { a: 0, k: [153, 153] },
-                },
-                {
-                  ty: "fl",
-                  nm: "Fill",
-                  o: { a: 0, k: 100 },
-                  c: { a: 0, k: [0.71, 0.192, 0.278] },
-                  r: 1,
-                },
-                {
-                  ty: "tr",
-                  a: { a: 0, k: [204, 169] },
-                  p: {
-                    a: 1,
-                    k: [
-                      {
-                        t: 0,
-                        s: [235, 106],
-                        h: 0,
-                        o: { x: [0.333], y: [0] },
-                        i: { x: [1], y: [1] },
-                      },
-                      {
-                        t: 60,
-                        s: [265, 441],
-                        h: 0,
-                        o: { x: [0], y: [0] },
-                        i: { x: [0.667], y: [1] },
-                      },
-                      { t: 120, s: [235, 106] },
-                    ],
-                  },
-                  s: {
-                    a: 1,
-                    k: [
-                      {
-                        t: 55,
-                        s: [100, 100],
-                        h: 0,
-                        o: { x: [0], y: [0] },
-                        i: { x: [1], y: [1] },
-                      },
-                      {
-                        t: 60,
-                        s: [136, 59],
-                        h: 0,
-                        o: { x: [0], y: [0] },
-                        i: { x: [1], y: [1] },
-                      },
-                      { t: 65, s: [100, 100] },
-                    ],
-                  },
-                  r: { a: 0, k: 0 },
-                  o: { a: 0, k: 100 },
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    };
     const { username, email, password } = values;
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -149,16 +57,19 @@ export function RegisterForm() {
 
       await setDoc(doc(db, "userAnimation", res.user.uid), {
         id: res.user.uid,
-        animation: JSON.stringify(lottieDefaultAnimation),
+        animation: "",
       });
-
-      console.log("Account created");
+      toast({
+        title: "Account Created",
+        description: "You're ready to Login",
+      });
+      form.reset();
     } catch (error) {
       console.log(error);
     }
   }
   return (
-    <Card className="mx-auto max-w-sm">
+    <Card className="w-full max-w-sm">
       <CardHeader>
         <CardTitle className="text-xl">Sign Up</CardTitle>
         <CardDescription>
