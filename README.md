@@ -12,17 +12,34 @@ your local machine for development and testing purposes.
 
 1. Install node packages
 
-npm install
+`npm install`
 
-2. Add `.env` file
+1. Add `.env` file
 
-3. Add `VITE_API_KEY="AIzaSyCTumENs4m8cGD6RQ2-zwbGoZpMWOk34KU"`
+2. Add `VITE_API_KEY="AIzaSyCTumENs4m8cGD6RQ2-zwbGoZpMWOk34KU"`
 
-4. Running the apps
+3. Running the apps
 
-npm run dev
+`npm run dev`
 
-## Built With
+### Running it
+
+1.  Register with your username, email, and password. You can use fake email. Since it would not be verified. For testing purpose, you can use the dummy email that I've created
+
+```
+email: dandhee.damarrama@gmail.com
+passwowrd: P@ssw0rd22024
+```
+
+![Login](https://gist.github.com/assets/13269955/e5cb6371-c440-477d-aa72-62e573e66c3b)
+
+2. Upload your lottie JSON file
+   ![Dashboard Page](https://gist.github.com/assets/13269955/a0d6c7c4-b8d7-4f03-89b3-4b803cda1101)
+
+3. You can edit the JSON and get instant result. Click save to save into the cloud
+   ![Edit Page](https://gist.github.com/assets/13269955/eaab7ad4-a1d1-4989-baa3-ba4bc6aea540)
+
+### Built With
 
 - React
 
@@ -38,7 +55,7 @@ npm run dev
 
 - Vite
 
-## Post Mortem
+### Post Mortem
 
 The project is far from perfect. It covers the following aspects from the assignment:
 
