@@ -1,30 +1,51 @@
-# React + TypeScript + Vite
+# Real Time Animation Collaboration
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mini editor web based app to edit lottie file json properties.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+These instructions will give you a copy of the project up and running on
 
-## Expanding the ESLint configuration
+your local machine for development and testing purposes.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Installing
 
-- Configure the top-level `parserOptions` property like this:
+1. Install node packages
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+npm install
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Add `.env` file
+
+3. Add `VITE_API_KEY="AIzaSyCTumENs4m8cGD6RQ2-zwbGoZpMWOk34KU"`
+
+4. Running the apps
+
+npm run dev
+
+## Built With
+
+- React
+
+- Firebase/firestore
+
+- Zustand
+
+- Apollo
+
+- ShadcnUI
+
+- Lottie React Web
+
+- Vite
+
+## Post Mortem
+
+The project is far from perfect. It covers the following aspects from the assignment:
+
+- [x] Editing JSON file.
+- [x] Real time collaboration.
+- [x] User authentication system.
+- [x] Upload their own lottie files.
+- [x] Save the edited files to database.
+
+Time management will improve in the future. I should have spent more time learning about Lottie JSON file structure and schema instead of focusing on creating real-time collaboration using Firebase.
